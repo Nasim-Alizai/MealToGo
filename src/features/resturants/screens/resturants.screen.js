@@ -9,14 +9,14 @@ const SafeArea = styled.SafeAreaView`
 	${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
 `;
 const SearchBarView = styled.View`
-	padding: 10px;
+	padding: ${(props) => props.theme.space[2]};
 `;
 const SearchBar = styled(Searchbar)`
-	height: 35px;
+	height: ${(props) => props.theme.space[4]};
 `;
 const ResturantList = styled.View`
 	flex: 1;
-	padding: 16px;
+	padding: ${(props) => props.theme.space[3]};
 `;
 
 export const ResturantsScreen = () => (
