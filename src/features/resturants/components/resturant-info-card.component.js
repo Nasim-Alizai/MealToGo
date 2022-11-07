@@ -27,7 +27,7 @@ export const ResturantInfoCard = ({ resturant = {} }) => {
 	const ratingArray = Array.from(new Array(Math.floor(rating)));
 
 	return (
-		<Card>
+		<Card style={{ marginBottom: 16 }}>
 			<Card.Cover key={name} source={{ uri: photos[0] }} />
 			<Card.Content>
 				<CardTitle>{name}</CardTitle>
