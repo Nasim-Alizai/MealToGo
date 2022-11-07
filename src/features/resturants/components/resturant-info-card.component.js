@@ -1,30 +1,15 @@
 import React from "react";
 import { Image } from "react-native";
-import { Card, Paragraph, Text, Title } from "react-native-paper";
-import styled from "styled-components/native";
+import { Card, Text } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/stars";
 import open from "../../../../assets/open";
-
-const CardTitle = styled(Title)`
-	font-family: ${(props) => props.theme.fonts.body};
-	padding-top: ${(props) => props.theme.space[2]};
-`;
-const AddressCard = styled(Paragraph)`
-	font-family: ${(props) => props.theme.fonts.body};
-`;
-
-const Rating = styled.View`
-	flex-direction: row;
-	padding-top: ${(props) => props.theme.space[1]};
-	padding-bottom: ${(props) => props.theme.space[1]};
-`;
-
-const Row = styled.View`
-	justify-content: space-between;
-	flex-direction: row;
-	align-items: center;
-`;
+import {
+	Rating,
+	CardTitle,
+	AddressCard,
+	Row,
+} from "./resturant-info-card.styles";
 
 export const ResturantInfoCard = ({ resturant = {} }) => {
 	const {
@@ -58,9 +43,13 @@ export const ResturantInfoCard = ({ resturant = {} }) => {
 						</Text>
 					)}
 					{isOpenNow && <SvgXml xml={open} width={20} height={20} />}
-					<Image source={{ uri: icon }} style={{ width: 20, height: 20 }} />
+					<Image
+						key={icon}
+						source={{ uri: icon }}
+						style={{ width: 20, height: 20 }}
+					/>
 				</Row>
-				<Paragraph>{address}</Paragraph>
+				<AddressCard>{address}</AddressCard>
 			</Card.Content>
 		</Card>
 	);
