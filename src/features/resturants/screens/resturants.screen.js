@@ -1,6 +1,5 @@
 import React from "react";
 import { SafeArea, SearchBar, SearchBarView } from "./resturants.screen.styles";
-
 import { ResturantInfoCard } from "../components/resturant-info-card.component";
 import { FlatList } from "react-native";
 
