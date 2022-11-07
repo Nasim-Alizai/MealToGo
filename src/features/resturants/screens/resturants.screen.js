@@ -12,10 +12,10 @@ const SearchBarView = styled.View`
 	padding: ${(props) => props.theme.space[2]};
 `;
 const SearchBar = styled(Searchbar)`
+	font-family: ${(props) => props.theme.fonts.body};
 	height: ${(props) => props.theme.space[5]};
 `;
 const ResturantList = styled.View`
-	font-family: ${(props) => props.theme.fonts.body};
 	flex: 1;
 	padding: ${(props) => props.theme.space[3]};
 `;
