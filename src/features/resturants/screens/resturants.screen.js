@@ -6,7 +6,7 @@ import { ResturantInfoCard } from "../components/resturant-info-card.component";
 
 const SafeArea = styled.SafeAreaView`
 	flex: 1;
-	margin-top: ${StatusBar.currentHeight}px;
+	${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
 `;
 const SearchBarView = styled.View`
 	padding: 10px;
