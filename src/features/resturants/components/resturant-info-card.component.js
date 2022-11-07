@@ -1,5 +1,6 @@
 import React from "react";
-import { Card, Paragraph, Title } from "react-native-paper";
+import { Image } from "react-native";
+import { Card, Paragraph, Text, Title } from "react-native-paper";
 import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/stars";
@@ -28,21 +29,21 @@ const Row = styled.View`
 export const ResturantInfoCard = ({ resturant = {} }) => {
 	const {
 		name = "haidar resturant",
-		icon,
+		icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
 		photos = [
 			"https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
 		],
 		address = "100 some random street",
 		isOpenNow = true,
 		rating = 4,
-		isClosedTemporarily,
+		isClosedTemporarily = true,
 	} = resturant;
 
 	const ratingArray = Array.from(new Array(Math.floor(rating)));
 
 	return (
 		<Card>
-			<Card.Cover source={{ uri: photos[0] }} />
+			<Card.Cover key={name} source={{ uri: photos[0] }} />
 			<Card.Content>
 				<CardTitle>{name}</CardTitle>
 				<Row>
@@ -51,7 +52,13 @@ export const ResturantInfoCard = ({ resturant = {} }) => {
 							<SvgXml xml={star} width={20} height={20} />
 						))}
 					</Rating>
-					<SvgXml xml={open} width={20} height={20} />
+					{isClosedTemporarily && (
+						<Text variant='label' style={{ color: "red" }}>
+							Closed Temporarily
+						</Text>
+					)}
+					{isOpenNow && <SvgXml xml={open} width={20} height={20} />}
+					<Image source={{ uri: icon }} style={{ width: 20, height: 20 }} />
 				</Row>
 				<Paragraph>{address}</Paragraph>
 			</Card.Content>
