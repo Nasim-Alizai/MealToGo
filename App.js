@@ -10,6 +10,23 @@ import { Ionicons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
+const TAB_ICON = {
+	Resturant: "md-restaurant",
+	Maps: "md-map",
+	Settings: "md-settings",
+};
+
+const creatScreenOptions = ({ route }) => {
+	const iconName = TAB_ICON[route.name];
+	return {
+		tabBarIcon: ({ size, color }) => (
+			<Ionicons name={iconName} size={size} color={color} />
+		),
+		tabBarActiveTintColor: "tomato",
+		tabBarInactiveTintColor: "gray",
+	};
+};
+
 const SettingsScreen = () => (
 	<SafeArea>
 		<Text>setting</Text>
@@ -42,23 +59,7 @@ export default function App() {
 		<>
 			<ThemeProvider theme={theme}>
 				<NavigationContainer>
-					<Tab.Navigator
-						screenOptions={({ route }) => ({
-							tabBarIcon: ({ color, size }) => {
-								let iconName;
-
-								if (route.name === "Resturant") {
-									iconName = "md-restaurant";
-								} else if (route.name === "Settings") {
-									iconName = "md-settings";
-								} else if (route.name === "Maps") {
-									iconName = "md-map";
-								}
-								return <Ionicons name={iconName} size={size} color={color} />;
-							},
-							tabBarActiveTintColor: "tomato",
-							tabBarInactiveTintColor: "gray",
-						})}>
+					<Tab.Navigator screenOptions={creatScreenOptions}>
 						<Tab.Screen name='Resturant' component={ResturantsScreen} />
 						<Tab.Screen name='Maps' component={MapsScreen} />
 						<Tab.Screen name='Settings' component={SettingsScreen} />
