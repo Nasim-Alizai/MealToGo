@@ -1,18 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 import { SafeArea, SearchBar, SearchBarView } from "./resturants.screen.styles";
 import { ResturantInfoCard } from "../components/resturant-info-card.component";
-import { FlatList } from "react-native";
+import { FlatList, View } from "react-native";
+import { ResturantsContext } from "../../../services/resturants/resturants.context";
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
 
-export const ResturantsScreen = () => (
-	<SafeArea>
-		<SearchBarView>
-			<SearchBar placeholder='Search' />
-		</SearchBarView>
-		<FlatList
-			data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }]}
-			renderItem={() => <ResturantInfoCard />}
-			keyExtractor={(item) => item.name}
-			contentContainerStyle={{ padding: 16 }}
-		/>
-	</SafeArea>
-);
+export const ResturantsScreen = () => {
+	const { isLoading, error, resturants } = useContext(ResturantsContext);
+	return (
+		<SafeArea>
+			{isLoading && (
+				<View style={{ position: "absolute", top: "50%", left: "50%" }}>
+					<ActivityIndicator
+						animating={true}
+						color={MD2Colors.red800}
+						size={50}
+						style={{ marginLeft: -25 }}
+					/>
+				</View>
+			)}
+
+			<SearchBarView>
+				<SearchBar placeholder='Search' />
+			</SearchBarView>
+			<FlatList
+				data={resturants}
+				renderItem={({ item }) => {
+					return <ResturantInfoCard resturant={item} />;
+				}}
+				keyExtractor={(item) => item.name}
+				contentContainerStyle={{ padding: 16 }}
+			/>
+		</SafeArea>
+	);
+};

@@ -1,5 +1,5 @@
 import React from "react";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
 import { Card, Text } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/stars";
@@ -11,7 +11,7 @@ import {
 	Row,
 } from "./resturant-info-card.styles";
 
-export const ResturantInfoCard = ({ resturant = {} }) => {
+export const ResturantInfoCard = ({ resturant = [] }) => {
 	const {
 		name = "haidar resturant",
 		icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
@@ -37,17 +37,19 @@ export const ResturantInfoCard = ({ resturant = {} }) => {
 							<SvgXml xml={star} width={20} height={20} />
 						))}
 					</Rating>
-					{isClosedTemporarily && (
-						<Text variant='label' style={{ color: "red" }}>
-							Closed Temporarily
-						</Text>
-					)}
-					{isOpenNow && <SvgXml xml={open} width={20} height={20} />}
-					<Image
-						key={icon}
-						source={{ uri: icon }}
-						style={{ width: 20, height: 20 }}
-					/>
+					<View style={{ flexDirection: "row" }}>
+						{isClosedTemporarily && (
+							<Text variant='label' style={{ color: "red", marginRight: 5 }}>
+								Closed Temporarily
+							</Text>
+						)}
+						{isOpenNow && <SvgXml xml={open} width={20} height={20} />}
+						<Image
+							key={icon}
+							source={{ uri: icon }}
+							style={{ width: 20, height: 20, marginLeft: 5 }}
+						/>
+					</View>
 				</Row>
 				<AddressCard>{address}</AddressCard>
 			</Card.Content>
