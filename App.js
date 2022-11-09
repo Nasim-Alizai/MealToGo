@@ -12,7 +12,7 @@ import { ResturantsContextProvider } from "./src/services/resturants/resturants.
 const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
-	Resturant: "md-restaurant",
+	Resturants: "md-restaurant",
 	Maps: "md-map",
 	Settings: "md-settings",
 };
@@ -62,7 +62,7 @@ export default function App() {
 				<ResturantsContextProvider>
 					<NavigationContainer>
 						<Tab.Navigator screenOptions={creatScreenOptions}>
-							<Tab.Screen name='Resturant' component={ResturantsScreen} />
+							<Tab.Screen name='Resturants' component={ResturantsScreen} />
 							<Tab.Screen name='Maps' component={MapsScreen} />
 							<Tab.Screen name='Settings' component={SettingsScreen} />
 						</Tab.Navigator>
