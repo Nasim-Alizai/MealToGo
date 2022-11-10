@@ -14,7 +14,6 @@ export const resturantsTransform = ({ results = [] }) => {
 		resturant.photos = resturant.photos.map((p) => {
 			return mockImages[Math.ceil(Math.random() * (mockImages.length - 1))];
 		});
-		console.log(resturant);
 		return {
 			...resturant,
 			isClosedTemporarily: resturant.business_status === "CLOSED_TEMPORARILY",
