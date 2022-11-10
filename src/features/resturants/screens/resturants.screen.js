@@ -4,6 +4,7 @@ import { ResturantInfoCard } from "../components/resturant-info-card.component";
 import { FlatList, View } from "react-native";
 import { ResturantsContext } from "../../../services/resturants/resturants.context";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
+import { Search } from "../components/search.component";
 
 export const ResturantsScreen = () => {
 	const { isLoading, error, resturants } = useContext(ResturantsContext);
@@ -20,9 +21,7 @@ export const ResturantsScreen = () => {
 				</View>
 			)}
 
-			<SearchBarView>
-				<SearchBar placeholder='Search' />
-			</SearchBarView>
+			<Search />
 			<FlatList
 				data={resturants}
 				renderItem={({ item }) => {
