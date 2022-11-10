@@ -33,8 +33,8 @@ export const ResturantInfoCard = ({ resturant = [] }) => {
 				<CardTitle>{name}</CardTitle>
 				<Row>
 					<Rating>
-						{ratingArray.map(() => (
-							<SvgXml xml={star} width={20} height={20} />
+						{ratingArray.map((item, i) => (
+							<SvgXml key={i} xml={star} width={20} height={20} />
 						))}
 					</Rating>
 					<View style={{ flexDirection: "row" }}>
