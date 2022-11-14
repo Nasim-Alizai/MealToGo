@@ -1,4 +1,5 @@
 import React from "react";
+import "react-native-gesture-handler";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./src/infrastructure/theme";
